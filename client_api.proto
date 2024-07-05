@@ -1,0 +1,55 @@
+syntax = "proto3";
+option go_package = "hf-client-api-service/client_api-proto";
+
+// start CLIENT setup
+
+message CreateClientRequest {
+  
+  string name = 1;
+  string cpf = 2;
+  string email = 3;
+  string phoneNumber = 4;
+  string address = 5;
+}
+
+message CreateClientResponse {
+  string uuid = 1;
+  string name = 2;
+  string cpf = 3;
+  string email = 4;
+  string phoneNumber = 5;
+  string address = 6;
+  string createdAt = 7;
+}
+
+message GetClientByIDRequest { string uuid = 1; }
+
+message GetClientByIDResponse {
+  string uuid = 1;
+  string name = 2;
+  string cpf = 3;
+  string email = 4;
+  string phoneNumber = 5;
+  string address = 6;
+  string createdAt = 7;
+}
+
+message GetClientByCPFRequest { string cpf = 1; }
+
+message GetClientByCPFResponse {
+  string uuid = 1;
+  string name = 2;
+  string cpf = 3;
+  string email = 4;
+  string phoneNumber = 5;
+  string address = 6;
+  string createdAt = 7;
+}
+
+service Client {
+  rpc GetClientByID(GetClientByIDRequest) returns (GetClientByIDResponse);
+  rpc GetClientByCPF(GetClientByCPFRequest) returns (GetClientByCPFResponse);
+  rpc CreateClient(CreateClientRequest) returns (CreateClientResponse);
+}
+
+// end CLIENT setup
